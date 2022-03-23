@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Club</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+  <link rel="stylesheet" href="bookclub-form.css" />
+
+</head>
+<body>
+  <div class="container">
+    <div class="row my-4">
+      <div class="col-12">
+        <h1>Enter your book</h1>
+      </div>
+    </div>
+    
+    <form id="book-club-choice-form" action="bookclub-history-rec.html" method="post">
+
+     <div class="form-group">
+        <label for="date-chosen" class="h5">Meeting Date:</label>
+
+        <input type="date" id="date-chosen" name="date-chosen-form"
+        value="" 
+        min="2000-01-01" max="" >
+    </div>
+
+    <div class="form-group">
+       <select id="chooser" class="custom-select form-control required">
+        <option selected>Who Chose the Book?</option>
+        <option value="alicia">Alicia</option>
+        <option value="brenda">Brenda</option>
+        <option value="ginny">Ginny</option>
+        <option value="heather">Heather</option>
+        <option value="jenny">Jenny</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+        <label for="book-title" class="h5">Book title:</label>
+        <input class="form-control" type="text" id="title" placeholder="title" required minlength="1">
+   </div>
+
+   <div class="form-group">
+    <label for="book-author" class="h5">Author:</label>
+    <input class="form-control" type="text" id="author" placeholder="author" required minlength="4">
+</div>
+
+   <div class="form-group mb-2">
+    <input id="submit" class="btn btn-primary" type="submit" value="submit" />
+   </div>
+    </form>
+  
+  
+</div><!-- end of container -->
+
+  <script src="bookclub-form.js"></script>
+ </body>
+</html>

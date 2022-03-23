@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Club</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+  <link rel="stylesheet" href="bookclub-form.css" />
+  
+<body>
+  <div id="loading"></div>
+  <div class="container">
+    <div class="row my-4">
+      <div class="col-12">
+        <h1>Book Club history</h1>
+      </div>
+    </div>
+
+    <table class = "table table-sm table-striped table-bordered" id="book-history-table">
+      <tr>
+        <th>Date</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Chooser</th>
+        <th>Delete</th>
+      </tr>
+
+      </table>
+    
+      <h1>Need a recommendation?</h1>
+
+    <form id ="get-book-recs">
+      <div class="row">
+        <div class="col-6">
+          <select id="recommendation-genre" class="custom-select form-control">
+          <option value selected>Which genre?</option>
+           <option value="trade-fiction-paperback">Paperback Fiction</option>
+           <option value="paperback-nonfiction">Paperback Nonfiction</option>
+          
+          </select>
+        </div><!-- end of col 6-->
+        <div class="col-6">
+          <select id="recommendation-year" class="custom-select form-control">
+           
+           </select>
+            </div>
+
+       </div> <!-- end of row -->
+        <div class="form-group pt-2">
+           <input id="submit" class="btn btn-primary" type="submit" value="Get Recommendation" />
+        </div>
+    </form>
+
+    <div id="book-recommendation">
+
+    </div>
+    <a href="bookclub-form.html" class="btn btn-danger">Return to form</a>
+
+</div><!-- end of container -->
+
+  <script src="api-key.js"></script>  
+  <script src="bookclub-history-rec.js"></script>
+  </body>
+</html>
