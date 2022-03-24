@@ -20,3 +20,15 @@
     width: 100%;
     z-index: 9999999;
 }
+
+.btn-secondary  {
+        color: #ffffff;
+    background-color: #f16573;
+    text-shadow: none;
+    border: none;
+    border-radius: 0rem;
+    margin:.1rem 0rem;
+    padding: .4rem 1.2rem;
+
+}
+
