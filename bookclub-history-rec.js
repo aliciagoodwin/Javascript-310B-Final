@@ -4,7 +4,7 @@ const bookHistoryTable = document.getElementById("book-history-table");
 
 const loading = document.getElementById("loading");
 
-//remove juggling avocado
+//remove books
 
 setTimeout(() => {
     loading.style.display = 'none';
@@ -23,7 +23,7 @@ const bookPropertyKeys = ["dateChosen", "bookTitle", "bookAuthor", "chooser"];
     return book;
   });
 
-const sortedBookHistory = bookHistory.sort((a, b) => a.dateInEpoch - b.dateInEpoch);
+const sortedBookHistory = bookHistory.sort((b, a) => a.dateInEpoch - b.dateInEpoch);
 
 //debugger;
    
@@ -43,7 +43,7 @@ const sortedBookHistory = bookHistory.sort((a, b) => a.dateInEpoch - b.dateInEpo
         if (key === "chooser") {
             const deleteTableData = document.createElement('td');
             const deleteBtn = document.createElement("button");
-                deleteBtn.classList.add("btn-danger");
+                deleteBtn.classList.add("btn-secondary");
                 deleteBtn.setAttribute("id", "delete");
                 deleteBtn.innerText = "Delete";
             deleteTableData.appendChild(deleteBtn);
@@ -116,42 +116,50 @@ formRecs.addEventListener("submit", function (e) {
     })
     .then(function (responseJson) {
       const bookList = responseJson.results.books;
+      const randBook = bookList[randomNum];
+     
+      const mostTimeOnListBook = bookList.sort((b, a) => a.weeks_on_list - b.weeks_on_list);
+          const topBook = mostTimeOnListBook[0];
+      console.log(`top book ${topBook.title}`);
 
-      const book = bookList[randomNum];
-      console.log(`what is the book ${book}`);
+      const twoBooks = [randBook, topBook];
 
-      const mainDiv = document.createElement("div");
-      mainDiv.className = "row col-12 pb-3";
+        twoBooks.forEach(book => {
+       
+              const mainDiv = document.createElement("div");
+              mainDiv.className = "row col-12 pb-3";
 
-      const imageDiv = document.createElement("div");
-      imageDiv.className = "col-6";
-      const img = new Image(200, 200);
-      img.src = book.book_image;
-      imageDiv.appendChild(img);
-      mainDiv.appendChild(imageDiv);
+              const imageDiv = document.createElement("div");
+              imageDiv.className = "col-6";
+            
+              const img = new Image(200, 200);
+              img.src = book.book_image;
+              imageDiv.appendChild(img);
+              mainDiv.appendChild(imageDiv);
 
-      const bookDiv = document.createElement("div");
-      bookDiv.className = "col-6 p-3";
+              const bookDiv = document.createElement("div");
+              bookDiv.className = "col-6 p-3";
 
-      const bookSpan = document.createElement("div");
-      bookSpan.className = "h4 font-italic";
-      title = book.title;
-      bookSpan.innerHTML = title;
+              const bookSpan = document.createElement("div");
+              bookSpan.className = "h4 font-italic";
+              title = book.title;
+              bookSpan.innerHTML = title;
 
-      const authorSpan = document.createElement("span");
-      authorSpan.className = "h6";
-      authorSpan.innerHTML = `by ${book.author}`;
+              const authorSpan = document.createElement("span");
+              authorSpan.className = "h6";
+              authorSpan.innerHTML = `by ${book.author}`;
 
-      const descDiv = document.createElement("div");
-      descDiv.innerHTML = book.description;
+              const descDiv = document.createElement("div");
+              descDiv.innerHTML = book.description;
 
-      bookDiv.appendChild(bookSpan);
-      bookDiv.appendChild(authorSpan);
-      bookDiv.appendChild(descDiv);
+              bookDiv.appendChild(bookSpan);
+              bookDiv.appendChild(authorSpan);
+              bookDiv.appendChild(descDiv);
 
-      //   showBooks.appendChild(imageDiv);
-      bookRecContainer.appendChild(mainDiv);
-      mainDiv.appendChild(imageDiv);
-      mainDiv.append(bookDiv);
-    });
+              //   showBooks.appendChild(imageDiv);
+              bookRecContainer.appendChild(mainDiv);
+              mainDiv.appendChild(imageDiv);
+              mainDiv.append(bookDiv);
+            });
+            });
 }); // end of add event listener
